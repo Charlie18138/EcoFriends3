@@ -1,6 +1,7 @@
 package com.example.d064899.ecofriends;
 
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -47,10 +49,10 @@ public class HomeActiviti extends AppCompatActivity {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-        mViewPager.setCurrentItem(1);
+        mViewPager.setCurrentItem(0);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        TabLayout.Tab default_tab = tabLayout.getTabAt(1);
+        TabLayout.Tab default_tab = tabLayout.getTabAt(0);
         default_tab.select();
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
@@ -82,20 +84,20 @@ public class HomeActiviti extends AppCompatActivity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
+/*    public static class PlaceholderFragment extends Fragment {
+     *//*
+     * The fragment argument representing the section number for this
+     * fragment.
+     *//*
         private static final String ARG_SECTION_NUMBER = "section_number";
 
         public PlaceholderFragment() {
         }
 
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
+        *//*
+     * Returns a new instance of this fragment for the given section
+     * number.
+     *//*
         public static PlaceholderFragment newInstance(int sectionNumber) {
             PlaceholderFragment fragment = new PlaceholderFragment();
             Bundle args = new Bundle();
@@ -104,13 +106,13 @@ public class HomeActiviti extends AppCompatActivity {
             return fragment;
         }
 
-    }
+    }*/
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
      */
-    public class SectionsPagerAdapter extends FragmentPagerAdapter {
+    public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
 
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -120,20 +122,14 @@ public class HomeActiviti extends AppCompatActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-
             switch (position) {
                 case 0:
-                    // Instantiate an object from IntentIntegrator to have an instance to handle the scan
-                    IntentIntegrator scanIntegrator = new IntentIntegrator(HomeActiviti.this);
-                    // start scan; user will be asked to install "Barcode Scanner" app if user has not done this yet
-                    scanIntegrator.initiateScan();
-                case 1:
                     HomeActivitiHomeFragment homeActivitiHomeFragment = new HomeActivitiHomeFragment();
                     return homeActivitiHomeFragment;
-                case 2:
+                case 1:
                     HomeActivitiShopFragment homeActivitiShopFragment = new HomeActivitiShopFragment();
                     return homeActivitiShopFragment;
-                case 3:
+                case 2:
                     HomeActivitiNewsFragment homeActivitiNewsFragment = new HomeActivitiNewsFragment();
                     return homeActivitiNewsFragment;
             }
@@ -142,8 +138,24 @@ public class HomeActiviti extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            // Show 4 total pages.
-            return 4;
+            // Show 3 total pages.
+            return 3;
+        }
+    }
+
+    /*
+     * onClick-method for ImageButton ibtn_scan_toolbar
+     * Is executed when ImageButton was pressed
+     */
+    public void onClick(View view) {
+        /*
+         * Checks if scan button (here: ibtn_scan_toolbar) was pressed
+         */
+        if(view.getId() == R.id.ibtn_scan_toolbar) {
+            // Instantiate an object from IntentIntegrator to have an instance to handle the can
+            IntentIntegrator scanIntegrator = new IntentIntegrator(this);
+            // start scan; user will be asked to install "Barcode Scanner" app if user has not done this yet
+            scanIntegrator.initiateScan();
         }
     }
 
@@ -163,6 +175,7 @@ public class HomeActiviti extends AppCompatActivity {
              * scanContent represents the actual barcode number like e.g. 2345930450
              * scanFormat provides us with the type of the barcode,
              * we can drop scanFormat if we do not need this information for the database retrieval
+             * start next activity with startActivitiy after database retrieval
              */
 
         } else {
