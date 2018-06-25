@@ -38,7 +38,7 @@
         style="@android:style/Widget.Material.Light.ImageButton"
         android:layout_width="145dp"
         android:layout_height="145dp"
-        android:layout_marginBottom="85dp"
+        android:layout_marginBottom="76dp"
         android:layout_marginEnd="372dp"
         android:layout_marginStart="83dp"
         android:layout_marginTop="226dp"
@@ -46,6 +46,7 @@
         android:background="@drawable/ibtn_to_circle"
         android:backgroundTint="@color/colorSecondaryLight"
         android:cropToPadding="true"
+        android:onClick="onClick"
         android:padding="35dp"
         android:scaleType="fitCenter"
         android:src="@drawable/shoppingcart"
@@ -59,7 +60,6 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <ImageButton
-        android:tooltipText="Zu den News"
         android:id="@+id/ibtn_news"
         style="@android:style/Widget.Material.Light.ImageButton"
         android:layout_width="145dp"
@@ -72,10 +72,12 @@
         android:background="@drawable/ibtn_to_circle"
         android:backgroundTint="@color/colorSecondaryLight"
         android:cropToPadding="true"
+        android:onClick="onClick"
         android:padding="35dp"
         android:scaleType="fitCenter"
         android:src="@drawable/news"
         android:tint="@android:color/transparent"
+        android:tooltipText="Zu den News"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
