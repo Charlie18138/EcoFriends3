@@ -1,6 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="700dp">
+
+        <ImageView
+            android:id="@+id/background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/grass2"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <TextView
+            android:id="@+id/hersteller"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/rounded_corners"
+            android:fontFamily="@font/source_sans_pro_bold"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="24sp"
+            android:typeface="sans"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/product"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:backgroundTint="#66ffffff"
+            android:fontFamily="@font/source_sans_pro"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="18sp"
+            android:typeface="sans"
+            app:layout_constraintTop_toBottomOf="@+id/hersteller"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteX="192dp" />
+
+        <TextView
+            android:id="@+id/score_overall"
+            style="@android:style/Widget.Holo.ImageButton"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginTop="220dp"
+            android:background="@drawable/score_circle"
+            android:cropToPadding="true"
+            android:elevation="8dp"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="48sp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/t_inhalt"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/rounded_corners"
+            android:fontFamily="@font/source_sans_pro_bold"
+            android:text="Inhalt"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="14sp"
+            android:typeface="sans"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/score_overall" />
+
+        <TextView
+            android:id="@+id/t_fairtrade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/rounded_corners"
+            android:fontFamily="@font/source_sans_pro_bold"
+            android:text="FairTrade"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="14sp"
+            android:typeface="sans"
+            app:layout_constraintStart_toEndOf="@+id/t_inhalt"
+            app:layout_constraintTop_toBottomOf="@+id/score_overall" />
+
+        <TextView
+            android:id="@+id/t_erneuerbar"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/rounded_corners"
+            android:fontFamily="@font/source_sans_pro_bold"
+            android:text="Nachhaltigkeit"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="14sp"
+            android:typeface="sans"
+            app:layout_constraintStart_toEndOf="@+id/t_fairtrade"
+            app:layout_constraintTop_toBottomOf="@+id/score_overall" />
+
+        <TextView
+            android:id="@+id/inhalt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/detail_circle"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/t_inhalt" />
+
+        <TextView
+            android:id="@+id/fairtrade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/detail_circle"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryText"
+            app:layout_constraintEnd_toStartOf="@+id/erneuerbar"
+            app:layout_constraintStart_toEndOf="@+id/inhalt"
+            app:layout_constraintTop_toBottomOf="@+id/t_fairtrade" />
+
+        <TextView
+            android:id="@+id/erneuerbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/detail_circle"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/t_erneuerbar" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.v4.widget.NestedScrollView>
