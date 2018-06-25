@@ -168,15 +168,10 @@ public class HomeActiviti extends AppCompatActivity {
 
         if (scanningResult != null) {
             String scanContent = scanningResult.getContents();
-            String scanFormat = scanningResult.getFormatName();
 
-            /*
-             * @Quynh: continue with database retrieval in this section! :)
-             * scanContent represents the actual barcode number like e.g. 2345930450
-             * scanFormat provides us with the type of the barcode,
-             * we can drop scanFormat if we do not need this information for the database retrieval
-             * start next activity with startActivitiy after database retrieval
-             */
+            Intent i = new Intent(HomeActiviti.this, ProductActivity.class);
+            i.putExtra("Barcode", scanContent);
+            startActivity(i);
 
         } else {
             Toast toast = Toast.makeText(getApplicationContext(),"No scan data received!", Toast.LENGTH_SHORT);
