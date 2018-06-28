@@ -1,8 +1,11 @@
 package com.example.d064899.ecofriends;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,7 +32,6 @@ public class ProductActivity extends AppCompatActivity implements Listener {
         setContentView(R.layout.fragment_content_product);
 
         barcode = getIntent().getExtras().getString("Barcode");
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         pDatabase = FirebaseDatabase.getInstance().getReference("Produkte");
 
         hersteller = findViewById(R.id.hersteller);
@@ -50,23 +52,40 @@ public class ProductActivity extends AppCompatActivity implements Listener {
                     switch (Key){
                         case "HERSTELLER":
                             hersteller.setText(Value);
+                            hersteller.setVisibility(View.VISIBLE);
                             break;
                         case "NAME":
                             name.setText(Value);
+                            name.setVisibility(View.VISIBLE);
                             break;
                         case "SCORE":
                             score.setText(Value);
+                            score.setVisibility(View.VISIBLE);
                             break;
                         case "INHALT":
                             inhalt.setText(Value);
+                            inhalt.setVisibility(View.VISIBLE);
                             break;
                         case "NACHHALTIGKEIT":
                             erneuerbar.setText(Value);
+                            erneuerbar.setVisibility(View.VISIBLE);
                             break;
                         case "FAIRTRADE":
                             fairtrade.setText(Value);
+                            fairtrade.setVisibility(View.VISIBLE);
                             break;
                     }
+                }
+                if (hersteller.getVisibility() == View.INVISIBLE){
+                    Context context = getApplicationContext();
+                    CharSequence text = "Dieses Produkt existiert leider nicht in unserer Datenbank!";
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                } else {
+                    findViewById(R.id.t_erneuerbar).setVisibility(View.VISIBLE);
+                    findViewById(R.id.t_inhalt).setVisibility(View.VISIBLE);
+                    findViewById(R.id.t_fairtrade).setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -84,6 +103,7 @@ public class ProductActivity extends AppCompatActivity implements Listener {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
+
             }
         });
 
